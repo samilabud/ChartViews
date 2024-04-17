@@ -11,7 +11,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <main className="flex flex-col items-center justify-between p-24 min-h-96">
+          {children}
+        </main>
+      </body>
     </html>
   );
 }
