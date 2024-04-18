@@ -1,7 +1,7 @@
 "use client";
 import { createChart, ColorType } from "lightweight-charts";
 import React, { useEffect, useRef, useState, useCallback } from "react";
-import Link from "next/link";
+import BackTo from "../../components/back-to-component";
 
 let randomFactor = 25 + Math.random() * 25;
 const samplePoint = (i) =>
@@ -164,20 +164,11 @@ const SeriesCompare = () => {
         </div>
       </div>
       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <Link
-          href="/lightweight/"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            <span className="inline-block transition-transform group-hover:-translate-x-1 motion-reduce:transform-none">
-              &lt;-
-            </span>
-            Lightweight Charts{" "}
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            List of Lightweight Charts
-          </p>
-        </Link>
+        <BackTo
+          title="Lightweight Charts"
+          description=" List of Lightweight Charts"
+          path="/lightweight/"
+        />
       </div>
     </>
   );
