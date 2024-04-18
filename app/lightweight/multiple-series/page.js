@@ -3,32 +3,46 @@ import { createChart, ColorType } from "lightweight-charts";
 import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 
-const initialData = [
-  { open: 10, high: 10.63, low: 9.49, close: 9.55, time: 1642427876 },
-  { open: 9.55, high: 10.3, low: 9.42, close: 9.94, time: 1642514276 },
-  { open: 9.94, high: 10.17, low: 9.92, close: 9.78, time: 1642600676 },
-  { open: 9.78, high: 10.59, low: 9.18, close: 9.51, time: 1642687076 },
-  { open: 9.51, high: 10.46, low: 9.1, close: 10.17, time: 1642773476 },
-  { open: 10.17, high: 10.96, low: 10.16, close: 10.47, time: 1642859876 },
-  { open: 10.47, high: 11.39, low: 10.4, close: 10.81, time: 1642946276 },
-  { open: 10.81, high: 11.6, low: 10.3, close: 10.75, time: 1643032676 },
-  { open: 10.75, high: 11.6, low: 10.49, close: 10.93, time: 1643119076 },
-  { open: 10.93, high: 11.53, low: 10.76, close: 10.96, time: 1643205476 },
-];
+let randomFactor = 25 + Math.random() * 25;
+const samplePoint = (i) =>
+  i *
+    (0.5 +
+      Math.sin(i / 10) * 0.2 +
+      Math.sin(i / 20) * 0.4 +
+      Math.sin(i / randomFactor) * 0.8 +
+      Math.sin(i / 500) * 0.5) +
+  200;
+
+function generateLineData(numberOfPoints = 500) {
+  randomFactor = 25 + Math.random() * 25;
+  const res = [];
+  const date = new Date(Date.UTC(2018, 0, 1, 12, 0, 0, 0));
+  for (let i = 0; i < numberOfPoints; ++i) {
+    const time = date.getTime() / 1000;
+    const value = samplePoint(i);
+    res.push({
+      time,
+      value,
+    });
+
+    date.setUTCDate(date.getUTCDate() + 1);
+  }
+
+  return res;
+}
+
 const chartData = {
-  data: initialData,
   colors: {
     backgroundColor: "white",
     lineColor: "#2962FF",
     textColor: "black",
   },
 };
-const Candlestick = () => {
+const Series = () => {
   const chartContainerRef = useRef();
 
   useEffect(() => {
     const {
-      data,
       colors: { backgroundColor = "white", textColor = "black" },
     } = chartData;
 
@@ -41,14 +55,18 @@ const Candlestick = () => {
       height: 400,
     });
 
-    const newSeries = chart.addCandlestickSeries({
-      upColor: "#26a69a",
-      downColor: "#ef5350",
-      borderVisible: false,
-      wickUpColor: "#26a69a",
-      wickDownColor: "#ef5350",
-    });
-    newSeries.setData(data);
+    const lineSeriesOne = chart.addLineSeries({ color: "#2962FF" });
+    const lineSeriesTwo = chart.addLineSeries({ color: "rgb(225, 87, 90)" });
+    const lineSeriesThree = chart.addLineSeries({ color: "rgb(242, 142, 44)" });
+
+    const lineSeriesOneData = generateLineData();
+    const lineSeriesTwoData = generateLineData();
+    const lineSeriesThreeData = generateLineData();
+
+    lineSeriesOne.setData(lineSeriesOneData);
+    lineSeriesTwo.setData(lineSeriesTwoData);
+    lineSeriesThree.setData(lineSeriesThreeData);
+
     //Auto fitting all the content
     chart.timeScale().fitContent();
 
@@ -60,7 +78,7 @@ const Candlestick = () => {
   return (
     <>
       <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full">
-        <h1 className="text-3xl">Candlestick Chart</h1>
+        <h1 className="text-3xl">Multiple Series</h1>
       </div>
       <div ref={chartContainerRef} />
       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
@@ -83,4 +101,4 @@ const Candlestick = () => {
   );
 };
 
-export default Candlestick;
+export default Series;
