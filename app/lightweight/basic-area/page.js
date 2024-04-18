@@ -1,7 +1,6 @@
 "use client";
 import { createChart, ColorType } from "lightweight-charts";
 import React, { useEffect, useRef } from "react";
-import Link from "next/link";
 import BackTo from "../../components/back-to-component";
 
 const initialData = [
