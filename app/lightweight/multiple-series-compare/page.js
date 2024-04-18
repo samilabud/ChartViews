@@ -68,6 +68,7 @@ const SeriesCompare = () => {
         chart.timeScale().fitContent();
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [chart]
   );
 
@@ -95,6 +96,7 @@ const SeriesCompare = () => {
           }
         });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [seriesSelected]);
 
   useEffect(() => {
