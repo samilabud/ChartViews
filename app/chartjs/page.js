@@ -29,6 +29,26 @@ const ChartJS = () => {
           description="See vertical bars chart example."
           path="/chartjs/vertical-bars/"
         />
+        <GoTo
+          title="Horizontal Bars"
+          description="See vertical bars chart example."
+          path="/chartjs/horizontal-bars/"
+        />
+        <GoTo
+          title="Pie Chart"
+          description="See a pie chart example."
+          path="/chartjs/pie-chart/"
+        />
+        <GoTo
+          title="Bubble Chart"
+          description="See a bubble chart example."
+          path="/chartjs/bubble-chart/"
+        />
+        <GoTo
+          title="Doughnut Chart"
+          description="See a doughnut chart example."
+          path="/chartjs/doughnut-chart/"
+        />
       </div>
     </>
   );
