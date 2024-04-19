@@ -22,7 +22,7 @@ export const options = {
   },
 };
 
-export const data = {
+const data = {
   datasets: [
     {
       label: "Red dataset",
