@@ -13,7 +13,7 @@ import faker from "faker";
 
 ChartJS.register(LinearScale, PointElement, Tooltip, Legend);
 
-export const options = {
+const options = {
   responsive: false,
   scales: {
     y: {

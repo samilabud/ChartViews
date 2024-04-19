@@ -22,7 +22,7 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
+const options = {
   indexAxis: "y" as const,
   elements: {
     bar: {
