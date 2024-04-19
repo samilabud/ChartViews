@@ -34,29 +34,35 @@ export const options = {
     },
     title: {
       display: true,
-      text: "Line Area Chart",
+      text: "Line Chart",
     },
   },
 };
 
 const labels = ["January", "February", "March", "April", "May", "June", "July"];
 
-export const data = {
+const data = {
   labels,
   datasets: [
     {
-      fill: true,
-      label: "Dataset",
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+      label: "Dataset 1",
+      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+      borderColor: "rgb(255, 99, 132)",
+      backgroundColor: "rgba(255, 99, 132, 0.5)",
+    },
+    {
+      label: "Dataset 2",
+      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
       borderColor: "rgb(53, 162, 235)",
       backgroundColor: "rgba(53, 162, 235, 0.5)",
     },
   ],
 };
-const BasicArea = () => (
+
+const BasicLine = () => (
   <>
     <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full">
-      <h1 className="text-3xl">Basic Area Chart</h1>
+      <h1 className="text-3xl">Basic Line Chart</h1>
     </div>
     <Line options={options} data={data} width={700} height={400} />
     <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
@@ -69,4 +75,4 @@ const BasicArea = () => (
   </>
 );
 
-export default BasicArea;
+export default BasicLine;

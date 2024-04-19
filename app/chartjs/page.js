@@ -10,7 +10,7 @@ const ChartJS = () => {
       </div>
       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
         <BackTo
-          title="ChartJS Charts"
+          title="Chart Libraries"
           description="List of libraries used to create the charts."
           path="/"
         />
@@ -22,7 +22,12 @@ const ChartJS = () => {
         <GoTo
           title="Basic Line"
           description="See basic line chart example."
-          path="/chartjs/basic-area/"
+          path="/chartjs/basic-line/"
+        />
+        <GoTo
+          title="Vertical Bars"
+          description="See vertical bars chart example."
+          path="/chartjs/vertical-bars/"
         />
       </div>
     </>
